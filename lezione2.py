@@ -21,7 +21,7 @@ print(minuscolo)
 print(maiuscolo)
 print(titolo)
 
-#2-5. Famous Quote: Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following,
+#2-5/2.6. Famous Quote: Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following,
 #including the quotation marks: Albert Einstein once said, “A person who never made a mistake never tried anything new.”
 vip:str =input()
 frase:str =input()
@@ -31,3 +31,15 @@ print(f'{vip} once said,"{frase}"')
 #Then use the removesuffix() method to display the filename without the file extension, like some file browsers do.
 filename:str = "python_notes.txt"
 print(filename.removesuffix(".txt"))
+
+#3-1. Names: Store the names of a few of your friends in a list called names. Print each person’s name by accessing each element in the list, one at a time.
+names:list = ("lorenzo", "osama", "danila")
+print(names[0])
+print(names[1])
+print(names[2])
+
+#3-2. Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name, print a message to them.
+#The text of each message should be the same, but each message should be personalized with the person’s name.
+print(f"Ciao {names[0]} come stai?")
+print(f"Ciao {names[1]} come stai?")
+print(f"Ciao {names[2]} come stai?")
