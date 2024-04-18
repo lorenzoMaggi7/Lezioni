@@ -11,9 +11,10 @@ print(mex)
 #2-4. Name Cases: Use a variable to represent a person’s name, and then print that person’s name in lowercase, uppercase, and title case.
 
 y =str(input())
-lower:str = y.lower
-print(lower)
-upper:str = y.upper
-print(upper)
-title:str = y.title
-print(title)
+minuscolo:str = y.lower()
+print(minuscolo)
+maiuscolo:str = y.upper()
+print(maiuscolo)
+titolo:str = y.title()
+print(titolo)
+
