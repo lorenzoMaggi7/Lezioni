@@ -118,3 +118,4 @@ del people[0:2]
 print(people)
 
 
+
