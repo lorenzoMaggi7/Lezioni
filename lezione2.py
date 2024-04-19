@@ -109,15 +109,12 @@ print(f"{people[0]}, lo siento pero no puedo tenerte esta noche")
 people.pop(0)
 print(f"{people[0]}, i'm sorry but i can't have you tonight")
 people.pop(0)
-print(f"{people[0]}, i'm sorry but i can't have you tonight")
-people.pop(0)
+print(f"{people[1]}, i'm sorry but i can't have you tonight")
+people.pop(1)
 print(f"{people[0]}, sta sera ce stamo io te e antonio, se divertimo")
 print(f"{people[1]}, sta sera ce stamo io te e francesco, se divertimo")
 print("\n")
-del people[0]
-del people[0]
+del people[0:2]
 print(people)
-
-
 
 
