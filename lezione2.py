@@ -114,8 +114,48 @@ people.pop(1)
 print(f"{people[0]}, sta sera ce stamo io te e antonio, se divertimo")
 print(f"{people[1]}, sta sera ce stamo io te e francesco, se divertimo")
 print("\n")
+people1 = people
 del people[0:2]
 print(people)
+print("\n")
+
+
+"""
+3-8. Seeing the World: Think of at least five places in the world you’d like to visit.
+• Store the locations in a list. Make sure the list is not in alphabetical order.
+• Print your list in its original order. Don’t worry about printing the list neatly; just print it as a raw Python list.
+• Use sorted() to print your list in alphabetical order without modifying the actual list.
+• Show that your list is still in its original order by printing it.
+• Use sorted() to print your list in reverse-alphabetical order without changing the order of the original list.
+• Show that your list is still in its original order by printing it again.
+• Use reverse()  to change the order of your list. Print the list to show that its order has changed.
+• Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
+• Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order has been changed.
+• Use sort() to change your list so it’s stored in reverse-alphabetical order.
+Print the list to show that its order has changed.
+"""
+places: list = ["Japan","Indonesia","Scotland","Kenya","Brasil"]
+print(places)
+places1 = sorted(places)
+print(places1)
+print(places)
+places2 = sorted(places, reverse=True)
+print(places2)
+print(places)
+places.reverse()
+print(places)
+places.reverse()
+places.sort()
+print(places)
+places.sort(reverse=True)
+print(places)
+
+print("\n")
+
+#3-9. Dinner Guests: Working with one of the programs from Exercises 3, use len() to print a message indicating the number of people you’re inviting to dinner.
+
+print(f"The number of guests that i'm inviting to dinner is {len(people1)}")
+
 
 
 
