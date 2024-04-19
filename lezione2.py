@@ -33,7 +33,7 @@ filename:str = "python_notes.txt"
 print(filename.removesuffix(".txt"))
 print("\n")
 #3-1. Names: Store the names of a few of your friends in a list called names. Print each person’s name by accessing each element in the list, one at a time.
-names:list = ("lorenzo", "osama", "danila")
+names:list = ("lorenzo", "osama", "danilo")
 print(names[0])
 print(names[1])
 print(names[2])
