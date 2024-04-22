@@ -158,4 +158,46 @@ print(f"The number of guests that i'm inviting to dinner is {len(people1)}")
 
 
 
+#3-10. Every Function: Think of things you could store in a list.
+#For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like.
+#Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.
+colors:list = ["red","blue","yellow","purple","green","lilac","brown","white"]
+[colors.lower() for colors in colors[0:]]
+print(colors)
+[colors.upper() for colors in colors[0:]]
+print(colors)
+[colors.title() for colors in colors[0:]]
+print(colors)
+print(f"To me {colors[5]} is the best color ever ")
+print(f"{colors[5]}, is darker than {colors[-1]}")
+colors.reverse()
+print(colors)
+colors.sort()
+print(colors)
+colors.pop(0)
+print(colors)
+colors.append("black.txt")
+print(colors[-1])
+for v in colors:
+    v +=1 
+    if ".txt" in v:
+        v.removesuffix(".txt")
+        print(v)
+    continue
 
+
+
+
+
+print(colors)
+colors.insert(0,"cyan")
+print(colors)
+del colors[1:3]
+print(colors)
+
+"""
+6-1. Person: Use a dictionary to store information about a person you know. 
+Store their first name, last name, age, and the city in which they live. 
+You should have keys such as first_name, last_name, age, and city. 
+Print each piece of information stored in your dictionary.
+"""
