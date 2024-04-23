@@ -23,8 +23,8 @@ print(titolo)
 print("\n")
 #2-5/2.6. Famous Quote: Find a quote from a famous person you admire. Print the quote and the name of its author. Your output should look something like the following,
 #including the quotation marks: Albert Einstein once said, “A person who never made a mistake never tried anything new.”
-vip:str =input()
-frase:str =input()
+vip:str =input("Name of a famous person: ")
+frase:str =input("This persone said: ")
 print(f'{vip} once said,"{frase}"')
 print("\n")
 #2-8. File Extensions: Python has a removesuffix() method that works exactly like removeprefix(). Assign the value 'python_notes.txt' to a variable called filename. 
@@ -199,3 +199,13 @@ Print each piece of information stored in your dictionary.
 """
 person= dict(first_name = "Lorenzo", last_name = "Maggi", age = 22, city = "Roma")
 print(person)
+print("\n")
+"""
+6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. Think of five names, and use them as keys in your dictionary. 
+Think of a favorite number for each person, and store each as a value in your dictionary. 
+Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.
+"""
+favorite_number = dict(Lorenzo = 7, Osama = 3, Danila = 18, Gaia = 12, Giovanni = 90)
+print(favorite_number)
+
+
