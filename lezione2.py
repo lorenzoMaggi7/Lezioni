@@ -347,3 +347,32 @@ print()
 print(cities["Nice"])
 print()
 
+"""
+6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways.
+Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program, 
+or improving the formatting of the output.
+"""
+
+def add_favorite_places():
+    person = input("Enter the name of the person: ")
+    places = input("Enter their favorite places separated by commas: ").split(",")
+    places = [place.strip() for place in places]
+    if person in favorite_places:
+        if isinstance(favorite_places[person], set):
+            favorite_places[person] = list(favorite_places[person])  
+        favorite_places[person].extend(places)
+    else:
+        favorite_places[person] = places
+
+add_more = input("Do you want to add more favorite places? (yes/no): ").lower()
+while add_more == "yes":
+    add_favorite_places()
+    add_more = input("Do you want to add more favorite places? (yes/no): ").lower()
+
+print("\nFavorite Places:")
+for person, places in favorite_places.items():
+    print(f"{person}'s favorite places:")
+    for place in places:
+        print(f"- {place}")
+    print()
+    
