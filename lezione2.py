@@ -169,7 +169,7 @@ print(colors)
 [colors.title() for colors in colors[0:]]
 print(colors)
 print(f"To me {colors[5]} is the best color ever ")
-print(f"{colors[5]}, is darker than {colors[-1]}")
+print(f"{colors[5]} is darker than {colors[-1]}")
 colors.reverse()
 print(colors)
 colors.sort()
@@ -178,22 +178,18 @@ colors.pop(0)
 print(colors)
 colors.append("black.txt")
 print(colors[-1])
-for v in colors:
-    v +=1 
-    if ".txt" in v:
-        v.removesuffix(".txt")
-        print(v)
+for i in range(len(colors)):
+    if colors[i].endswith(".txt"):
+        colors[i] = colors[i].removesuffix(".txt")
+        print(colors)
     continue
-
-
-
-
 
 print(colors)
 colors.insert(0,"cyan")
 print(colors)
 del colors[1:3]
 print(colors)
+print("\n")
 
 """
 6-1. Person: Use a dictionary to store information about a person you know. 
@@ -201,3 +197,5 @@ Store their first name, last name, age, and the city in which they live.
 You should have keys such as first_name, last_name, age, and city. 
 Print each piece of information stored in your dictionary.
 """
+person= dict(first_name = "Lorenzo", last_name = "Maggi", age = 22, city = "Roma")
+print(person)
