@@ -214,7 +214,7 @@ print("\n")
 Think of a favorite number for each person, and store each as a value in your dictionary. 
 Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.
 """
-favorite_number = dict(Lorenzo = 7, Osama = 3, Danila = 18, Gaia = 12, Giovanni = 90)
+favorite_number:dict={"Lorenzo" :[ 7], "Osama" : [3], "Danila" : [18], "Gaia" : [12], "Giovanni" : [90]}
 print(favorite_number)
 print("\n")
 
@@ -321,4 +321,15 @@ for person, places in favorite_places.items():
 6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
 Then print each person’s name along with their favorite numbers.
 """
+
+favorite_number["Danila"].append(42)
+favorite_number["Gaia"].append(3)
+favorite_number["Giovanni"].append(2)
+favorite_number["Lorenzo"].append(10)
+
+print(favorite_number)
+print()
+
+
+
 
