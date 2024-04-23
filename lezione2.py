@@ -4,6 +4,10 @@
 #2-3. Personal Message: Use a variable to represent a person’s name, and print a message to that person.
 #Your message should be simple, such as, “Hello Eric, would you like to learn some Python today?”
 
+
+from collections import defaultdict
+
+
 x = str(input())
 mex: str = f"Ciao {x}, ti va di imparare python?"
 print(mex)
@@ -197,7 +201,12 @@ Store their first name, last name, age, and the city in which they live.
 You should have keys such as first_name, last_name, age, and city. 
 Print each piece of information stored in your dictionary.
 """
-person= dict(first_name = "Lorenzo", last_name = "Maggi", age = 22, city = "Roma")
+person:dict={
+    "first_name" : "Lorenzo",
+    "last_name" : "Maggi",
+    "age" : 22,
+    "city" : "Roma"
+    }
 print(person)
 print("\n")
 """
@@ -207,5 +216,56 @@ Print each person’s name and their favorite number. For even more fun, poll a 
 """
 favorite_number = dict(Lorenzo = 7, Osama = 3, Danila = 18, Gaia = 12, Giovanni = 90)
 print(favorite_number)
+print("\n")
+
+"""
+6-3. Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion, let’s call it a glossary.
+• Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys in your glossary, and store their meanings as values.
+• Print each word and its meaning as neatly formatted output. You might print the word followed by a colon and then its meaning, 
+or print the word on one line and then print its meaning indented on a second line. 
+Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
+"""
+Glossary:dict={
+    "insert: " : "To insert elements into a list in Python, you can use the insert() method.",
+    "append: " : "To append elements to a list in Python, you can use the .append() method.",
+    "sort: " : "In Python, you can sort a list using the sorted() function or the sort() method.",
+    "pop: " : "In Python, the pop() method is used to remove and return the element at a specific index from a list.",
+    "remove: " : "In Python, the remove() method is used to remove the first occurrence of a specified element from a list."
+}
+for key,value in Glossary.items():
+    print(key, value)
+    print()
+
+"""
+6-7. People: Start with the program you wrote for Exercise 6-1. 
+Make two new dictionaries representing different people, and store all three dictionaries in a list called people. 
+Loop through your list of people. As you loop through the list, print everything you know about each person
+"""
+
+new_people:dict={
+    "first_name" : "Andrea",
+    "last_name" : "Barbato",
+    "age" : 27,
+    "city" : "Roma" 
+}
+other_people:dict={
+    "first_name" : "Francesco",
+    "last_name" : "Palombi",
+    "age" : 22,
+    "city" : "Roma"
+}
 
 
+people = defaultdict(list)
+
+for d in (person, new_people, other_people):
+    for key, value in d.items():
+        people[key].append(value)
+
+people = dict(people)
+
+print(people)
+
+"""
+
+"""
