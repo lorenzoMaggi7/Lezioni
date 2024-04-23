@@ -330,6 +330,20 @@ favorite_number["Lorenzo"].append(10)
 print(favorite_number)
 print()
 
-
-
+"""
+6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. 
+Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city. 
+The keys for each city’s dictionary should be something like country, population, and fact. 
+Print the name of each city and all of the information you have stored about it.
+"""
+cities:dict = {"Roma" : {"Country" : "Italy","population" : "2873000", "fact" : "Rome is beeautifull"},
+               "Sidney": {"Country": "Australia", "population" : "5300000", "fact" : "Sidney is the fifth most expensive in the world"},
+               "Nice" : {"Country" : "France","population" : "342522", "fact" : "A cannon shoot for lunch every day"}
+               }
+print(cities["Roma"])
+print()
+print(cities["Sidney"])
+print()
+print(cities["Nice"])
+print()
 
