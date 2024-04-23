@@ -265,7 +265,60 @@ for d in (person, new_people, other_people):
 people = dict(people)
 
 print(people)
+print()
+
+
 
 """
+6-8. Pets: Make several dictionaries, where each dictionary represents a different pet.
+In each dictionary, include the kind of animal and the owner’s name. 
+Store these dictionaries in a list called pets. Next, loop through your list and as
+you do, print everything you know about each pet. 
+"""
+animal1:dict = {
+    "animal1" : "Dog",
+    "dog_race" : "Bulldog",
+    "owners_name" : "Sandra",
+    }
+animal2:dict = {"animal" : "Fish",
+    "fish_race" : "clownfish",
+    "owners_name" : "Osama"
+    }
+animal3:dict = {
+    "animal" : "Horse",
+    "horse_race" : "Mustang",
+    "owners_name" : "Carlo"
+}
+
+pets:list = []
+
+pets.append(animal1)
+pets.append(animal2)
+pets.append(animal3)
+
+print(pets)
 
 """
+6-9. Favorite Places: Make a dictionary called favorite_places. 
+Think of three names to use as keys in the dictionary, and store one to three favorite places for each person. 
+To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. 
+Loop through the dictionary, and print each person’s name and their favorite places
+"""
+
+favorite_places:dict = {
+    "Lorenzo" : {"Japan","Spain","Uganda"},
+    "Osama" : {"Morocco", "Italy", "Portugal"},
+    "Danila" : {"Canada","Argentina", "Belarus"}
+}
+
+for person, places in favorite_places.items():
+    print(f"{person}'s favorite places:")
+    for place in places:
+        print("- " + place)
+    print()  
+
+"""
+6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. 
+Then print each person’s name along with their favorite numbers.
+"""
+
