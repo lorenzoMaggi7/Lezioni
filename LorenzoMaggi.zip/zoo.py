@@ -44,16 +44,10 @@ Animal(name=Lupo, species=Lupus, age=14)
 
 Fra un recinto e l'altro mettete 30 volte il carattere #.
 """
-"""
-print("#" * 30)
-"""
-
-
 
 class Zoo:
     def __init__(self) -> None:
         pass
-
 
 
 
@@ -66,8 +60,6 @@ class Animal:
 class Fence:
     def __init__(self) -> None:
         pass
-
-
 
 
 
