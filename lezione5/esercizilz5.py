@@ -250,3 +250,38 @@ Write a method that displays these flavors.
 Create an instance of IceCreamStand, and call this method. 
 """
 
+class IceCreamStand(Restaurant):
+    def __init__(self, name: str,cuisine_type: str,flavors: str , number_served: int = 0, open: bool = False):
+        super().__init__(name, cuisine_type)
+        self.flavors = flavors
+    
+    def display_flavors(self):
+        print("Available flavors:")
+        for flavor in self.flavors:
+            print("-", flavor)
+
+ice_cream_stand = IceCreamStand("Scoops & More", "Ice Cream", ["Vanilla", "Chocolate", "Strawberry", "Mint Chip"])
+
+ice_cream_stand.display_flavors()
+
+print(" ")
+"""
+9-7. Admin: An administrator is a special kind of user. 
+Write a class called Admin that inherits from the User class you wrote in Exercise 9-3 or Exercise 9-5. 
+Add an attribute, privileges, that stores a list of strings like "can add post", "can delete post", "can ban user", and so on. 
+Write a method called show_privileges() that lists the administrator’s set of privileges. 
+Create an instance of Admin, and call your method. 
+"""
+class Admin(User):
+
+    def __init__(self, first_name: str, last_name: str, age: int, height: float, privileges: list[str]):
+        super().__init__(first_name, last_name, age, height)
+        self.privileges = privileges
+
+    def show_priviliges(self):
+        print("Here are your privileges: ")
+        for i in self.privileges:
+            print(i)
+
+admin_privileges = Admin("Lorenzo","Maggi",22,1.80,["can add post", "can delete post", "can ban user", "can promote user", "can delete all"])
+admin_privileges.show_priviliges()
