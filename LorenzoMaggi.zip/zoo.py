@@ -44,46 +44,10 @@ Animal(name=Lupo, species=Lupus, age=14)
 
 Fra un recinto e l'altro mettete 30 volte il carattere #.
 """
-
 class Zoo:
     def __init__(self):
         self.fences = []
         self.zoo_keepers = []
-
-    def add_animal(self, animal, fence):
-        if fence in self.fences and fence.area >= animal.height * animal.width and fence.habitat == animal.preferred_habitat:
-            fence.area -= animal.height * animal.width
-            fence.animals.append(animal)
-            print(f"{animal.name} è stato aggiunto al recinto {fence}.")
-        else:
-            print(f"Il recinto {fence} non può ospitare {animal.name}.")
-
-    def remove_animal(self, animal, fence):
-        if fence in self.fences and animal in fence.animals:
-            fence.area += animal.height * animal.width
-            fence.animals.remove(animal)
-            print(f"{animal.name} è stato rimosso dal recinto {fence}.")
-        else:
-            print(f"{animal.name} non è presente nel recinto {fence}.")
-
-    def feed(self):
-        for fence in self.fences:
-            for animal in fence.animals:
-                if animal.health < 100 and fence.area >= animal.height * animal.width * 1.02:
-                    animal.health += 1
-                    animal.height *= 1.02
-                    animal.width *= 1.02
-                    fence.area -= animal.height * animal.width
-                    print(f"{animal.name} è stato nutrito.")
-
-    def clean(self):
-        total_cleaning_time = 0.0
-        for fence in self.fences:
-            if fence.area > 0:
-                cleaning_time = fence.area / (fence.area + (fence.initial_area - fence.area))
-                total_cleaning_time += cleaning_time
-                print(f"Il tempo di pulizia del recinto {fence} è {cleaning_time} unità di tempo.")
-        return total_cleaning_time
 
     def describe_zoo(self):
         print("Guardiani:")
@@ -125,19 +89,61 @@ class Fence:
 
 
 class ZooKeeper:
-    def __init__(self, name, surname, id):
+    def __init__(self, name, surname, id, zoo):
         self.name = name
         self.surname = surname
         self.id = id
+        self.zoo = zoo
 
     def __str__(self):
         return f"ZooKeeper(name={self.name}, surname={self.surname}, id={self.id})"
+
+    def add_animal(self, animal, fence):
+        if fence in self.zoo.fences and fence.area >= animal.height * animal.width and fence.habitat == animal.preferred_habitat:
+            fence.area -= animal.height * animal.width
+            fence.animals.append(animal)
+            print(f"{animal.name} è stato aggiunto al recinto {fence}.")
+        else:
+            print(f"Il recinto {fence} non può ospitare {animal.name}.")
+
+    def remove_animal(self, animal, fence):
+        if fence in self.zoo.fences and animal in fence.animals:
+            fence.area += animal.height * animal.width
+            fence.animals.remove(animal)
+            print(f"{animal.name} è stato rimosso dal recinto {fence}.")
+        else:
+            print(f"{animal.name} non è presente nel recinto {fence}.")
+
+    def feed(self):
+        for fence in self.zoo.fences:
+            for animal in fence.animals:
+                new_height = animal.height * 1.02
+                new_width = animal.width * 1.02
+                if animal.health < 100 and fence.area >= (new_height * new_width - animal.height * animal.width):
+                    animal.health = min(100, animal.health + 1)
+                    fence.area += animal.height * animal.width
+                    animal.height = new_height
+                    animal.width = new_width
+                    fence.area -= animal.height * animal.width
+                    print(f"{animal.name} è stato nutrito.")
+
+    def clean(self):
+        total_cleaning_time = 0.0
+        for fence in self.zoo.fences:
+            occupied_area = sum([animal.height * animal.width for animal in fence.animals])
+            if occupied_area > 0:
+                cleaning_time = occupied_area / (fence.initial_area - occupied_area)
+            else:
+                cleaning_time = fence.initial_area
+            total_cleaning_time += cleaning_time
+            print(f"Il tempo di pulizia del recinto {fence} è {cleaning_time:.2f} unità di tempo.")
+        return total_cleaning_time
 
 
 # Esempio di utilizzo
 if __name__ == "__main__":
     zoo = Zoo()
-    zoo_keeper = ZooKeeper("Lorenzo", "Maggi", 1234)
+    zoo_keeper = ZooKeeper("Lorenzo", "Maggi", 1234, zoo)
     zoo.zoo_keepers.append(zoo_keeper)
 
     fence = Fence(area=100, temperature=25, habitat="Continentale")
@@ -146,15 +152,15 @@ if __name__ == "__main__":
     animal1 = Animal(name="Scoiattolo", species="Blabla", age=25, height=5, width=2, preferred_habitat="Continentale")
     animal2 = Animal(name="Lupo", species="Lupus", age=14, height=8, width=3, preferred_habitat="Continentale")
 
-    zoo.add_animal(animal1, fence)
-    zoo.add_animal(animal2, fence)
-    zoo.remove_animal(animal1, fence)
+    zoo_keeper.add_animal(animal1, fence)
+    zoo_keeper.add_animal(animal2, fence)
+    zoo_keeper.remove_animal(animal1, fence)
 
     zoo.describe_zoo()
 
-    zoo.feed()
+    zoo_keeper.feed()
 
     zoo.describe_zoo()
 
-    cleaning_time = zoo.clean()
+    cleaning_time = zoo_keeper.clean()
     print(f"\nTempo totale impiegato per la pulizia: {cleaning_time}")
