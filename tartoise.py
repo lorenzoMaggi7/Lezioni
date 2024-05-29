@@ -2,7 +2,7 @@ import random
 
 posizione = ["_" for i in range(1, 71)]
 
-def display_positions(tartaruga, lepre):
+def posizioni(tartaruga, lepre):
     for i in range(len(posizione)):
         posizione[i] = "_"
     if tartaruga == lepre:
@@ -40,7 +40,7 @@ tartaruga = 1
 lepre = 1
 
 while True:
-    display_positions(tartaruga, lepre)
+    posizioni(tartaruga, lepre)
     tartaruga += mossa_tartaruga()
     lepre += mossa_lepre()
 
@@ -50,14 +50,14 @@ while True:
         lepre = 1
 
     if tartaruga >= 70 and lepre >= 70:
-        display_positions(tartaruga, lepre)
+        posizioni(tartaruga, lepre)
         print("IT'S A TIE.")
         break
     elif tartaruga >= 70:
-        display_positions(tartaruga, lepre)
+        posizioni(tartaruga, lepre)
         print("TORTOISE WINS! || VAY!!!")
         break
     elif lepre >= 70:
-        display_positions(tartaruga, lepre)
+        posizioni(tartaruga, lepre)
         print("HARE WINS || YUCH!!!")
         break
