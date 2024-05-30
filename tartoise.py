@@ -68,7 +68,7 @@ posizione = ["_" for i in range(1, 71)]
 
 def posizioni(tartaruga, lepre):
     for i in range(len(posizione)):
-        posizione[i] = "_"
+        posizione[i] = "-"
     if tartaruga == lepre:
         posizione[tartaruga - 1] = "OUCH"
     else:
