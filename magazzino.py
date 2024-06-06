@@ -24,31 +24,85 @@ class Prodotto:
         self.quantità = quantità
 
 class Magazzino:
-    def __init__(self,magazino: dict) -> None:
-        self.nome = magazino
-        nome = {}
+    def __init__(self):
+        self.prodotti = {}
 
-    def aggiungi_prodotto(self,prodotto: Prodotto):
-        self.nome[prodotto.nome] = prodotto
-
-    def cerca_prodotto(self,nome: str):
-        if nome in self.nome:
-            return self.nome[nome]
+    def aggiungi_prodotto(self, prodotto: Prodotto):
+        if prodotto.nome in self.prodotti:
+            self.prodotti[prodotto.nome].quantità += prodotto.quantità
         else:
-            return None
+            self.prodotti[prodotto.nome] = prodotto
 
-    def verifica_disponibilità(self,nome:str):
-        if nome in self.nome:
-            disponibilità = self.nome[nome].quantità
-            if disponibilità > 0:
+    def cerca_prodotto(self, nome: str) -> Prodotto:
+        if nome in self.prodotti:
+            return self.prodotti[nome]
+        return None
+
+    def verifica_disponibilità(self, nome: str) -> str:
+        prodotto = self.cerca_prodotto(nome)
+        if prodotto:
+            if prodotto.quantità > 0:
                 return f"Il prodotto {nome} è disponibile"
             else:
                 return f"Il prodotto {nome} non è disponibile"
         else:
-            return f"Il prodotto {nome}non è presente nel magazzino"
+            return f"Il prodotto {nome} non è presente nel magazzino"
+
+
+magazzino = Magazzino()
+
+
+mela = Prodotto("Mela", 10)
+arancia = Prodotto("Arancia", 5)
+banana = Prodotto("Banana", 0)
+
+
+magazzino.aggiungi_prodotto(mela)
+magazzino.aggiungi_prodotto(arancia)
+magazzino.aggiungi_prodotto(banana)
+
+
+print("Test ricerca prodotto")
+if magazzino.cerca_prodotto("Mela") == mela:
+    print("Ricerca prodotto Mela passata")
+else:
+    print("Errore: ricerca prodotto Mela fallita")
+
+if magazzino.cerca_prodotto("Arancia") == arancia:
+    print("Ricerca prodotto Arancia passata")
+else:
+    print("Errore: ricerca prodotto Arancia fallita")
+
+if magazzino.cerca_prodotto("Banana") == banana:
+    print("Ricerca prodotto Banana passata")
+else:
+    print("Errore: ricerca prodotto Banana fallita")
+
+if magazzino.cerca_prodotto("Pera") is None:
+    print("Ricerca prodotto Pera passata")
+else:
+    print("Errore: ricerca prodotto Pera non dovrebbe esistere")
+
+print("\nTest verifica disponibilità")
+
+if magazzino.verifica_disponibilità("Mela") == "Il prodotto Mela è disponibile":
+    print("Disponibilità prodotto Mela passata")
+else:
+    print("Errore: disponibilità prodotto Mela")
+
+if magazzino.verifica_disponibilità("Arancia") == "Il prodotto Arancia è disponibile":
+    print("Disponibilità prodotto Arancia passata")
+else:
+    print("Errore: disponibilità prodotto Arancia")
+
+if magazzino.verifica_disponibilità("Banana") == "Il prodotto Banana non è disponibile":
+    print("Disponibilità prodotto Banana passata")
+else:
+    print("Errore: disponibilità prodotto Banana")
+
+if magazzino.verifica_disponibilità("Pera") == "Il prodotto Pera non è presente nel magazzino":
+    print("Disponibilità prodotto Pera passata")
+else:
+    print("Errore: disponibilità prodotto Pera")
         
 
-prodotto1 = Prodotto(nome="Lametta", quantità=50)
-prodotto2 = Prodotto(nome="Penne", quantità=100)
-
-magazzino1 = Magazzino(prodotto1)
