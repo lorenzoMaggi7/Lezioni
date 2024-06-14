@@ -1,6 +1,6 @@
 from dottore import Dottore
 from paziente import Paziente
-class Fattura(Dottore, Paziente):
+class Fattura:
     def __init__(self, patient:list[Paziente], doctor:Dottore) -> None:
         self.patient = patient
         self.doctor = doctor
@@ -34,4 +34,3 @@ class Fattura(Dottore, Paziente):
         self.getFatture()
         self.getSalary()
         print(f"Alla lista del Dottor {self.last_name} è stato rimosso il paziente {self.codice}")
-        
