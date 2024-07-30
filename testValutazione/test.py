@@ -24,10 +24,9 @@ print(" ")
 # Un errore nell'implementazione porta a risultati inaspettati.
 def calculate_average(numbers: list[int]) -> float:
     if len(numbers) != 0:
-        return sum(numbers) / len(numbers)
+        return sum(numbers)/ len(numbers)
     else:
         return 0
-    
 
 print(calculate_average([1, 2, 3, 4, 5]))
 print(calculate_average([]))
@@ -69,9 +68,9 @@ print(" ")
 #La funzione deve ritornare "Operazione permessa" oppure "Operazione negata" a seconda delle condizioni che sono soddisfatte.
 def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> str:
     if conditionA or (conditionB and conditionC):
-        return "operazione riuscita"
+        return "operazione permessa"
     else:
-        return "operazione fallita"
+        return "operazione negata"
     
 print(check_combination(True, False, True))
 print(check_combination(False, True, True))
@@ -295,3 +294,26 @@ def aggrega_voti(voti: list[dict]) -> dict[str:list[int]]:
 print(aggrega_voti([{'nome': 'Alice', 'voto': 90}, {'nome': 'Bob', 'voto': 75}, {'nome': 'Alice', 'voto': 85}]))
 print(aggrega_voti([{'nome': 'Alice', 'voto': 100}]))
 print(aggrega_voti([{'nome': 'Bob', 'voto': 75}, {'nome': 'Bob', 'voto': 85}]))
+
+
+
+
+#Data l'inizio di una lista concatenata, invertire la lista e restituire la lista invertita.
+
+# For example:
+# Test 	Result
+
+# head = ListNode(val=1, next=ListNode(val=2, next=ListNode(val=3, next=ListNode(val=4, next=ListNode(val=5)))))
+# print(reverse_list(head))
+
+	
+
+# [5, 4, 3, 2, 1]
+
+# head = ListNode(val=1, next=ListNode(val=2))
+# print(reverse_list(head))
+
+
+class ListNode:
+    def __init__(self, val= 0, next=None) -> None:
+        pass

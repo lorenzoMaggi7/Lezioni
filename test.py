@@ -1,179 +1,172 @@
-###black jack
-def blackjack(hand: list[int]) -> int:
-    total_sum: int = sum(hand)
-    num_aces: int = hand.count(1) + hand.count(11)
-    while total_sum > 21 and num_aces != 0:
-        total_sum -= 10
-        num_aces -= 1
-
-    return total_sum
-
-print(blackjack([2,3,5])) #10
-print(blackjack([11,5,5])) #21
-print(blackjack([1,10,11])) #12
-print(blackjack([1,10,5])) # 16
-print(" ")
-####rettangoli
-"""
-Uno sviluppatore web deve sapere come progettare le dimensioni di una pagina web. Pertanto, data l'area specifica di una pagina Web rettangolare, 
-il tuo compito ora è progettare una pagina Web rettangolare, la cui lunghezza L e larghezza W soddisfino i seguenti requisiti:
-
-1. L'area della pagina web rettangolare che hai progettato deve essere uguale all'area di destinazione specificata.
-2. La larghezza W non deve essere maggiore della lunghezza L, il che significa L >= W.
-3. La differenza tra la lunghezza L e la larghezza W dovrebbe essere la minima possibile.
-
-Restituisce una lista [L, W] dove L e W sono la lunghezza e la larghezza della pagina web che hai progettato in sequenza.
-
-Esempio:
-
-construct_rectangle(4)
-
-L'area target è 4 e tutti i modi possibili per costruirla sono [1,4], [2,2], [4,1].
-Ma secondo il requisito 2, [1,4] è illegale; secondo il requisito 3, [4,1] non è ottimale rispetto a [2,2]. Quindi la lunghezza L è 2 e la larghezza W è 2.
-"""
-def divisors(n):
-    result = []
-    for i in range(1, n//2 + 1):
-        if n % i == 0:
-            result.append(i)
-    result.append(n)
-    return result
-
-def construct_rectangle(area:float) -> list[float]:
+def print_seq(): 
     
-    min_dist = area - 1
-    props = []
-    dividers = divisors(area)
-    for i in dividers:
-        for j in dividers:
-            if area == (i*j):
-                dist = abs(i - j)
-                if dist <= min_dist:
-                    min_dist = dist
-                    props = [i,j]
+    print("Sequenza a):")
+    for i in range(1,8):
+        print(i)
+    print()
 
-    return props
+    print("Sequenza b):")
+    start = 3
+    for i in range(5):
+        print(start + i * 5)
+    print()
 
-print(construct_rectangle(37))
-print(construct_rectangle(122122))
-print(construct_rectangle(49))
-print(" ")
+    print("Sequenza c):")
+    start = 20
+    for i in range(6):
+        print(start - i * 6)
+    print()
 
-"""def construct_rectangle(area:int) -> list[float]:
-    result: list[int] = []
-    half_area: int = int(area **0.5)
-    for i in range(1,area+1):
-        for j in range(i, half_area+1):
-            if  i >= j and i * j == area:
-                result.append([i,j])
-
-
-    diff_min:float = float('inf')
-    index: int= 0
-    for i in range(len(result)):
-        curr_diff: float = abs(result[i][0] - result[i][1])
-        if curr_diff <= diff_min:
-            diff_min = curr_diff
-            index = i
-
-    return result[index]"""
-
-"""def construct_rectangle(area:int) -> list[int]:
-    sqrt_area = int(area **0.5)
-    for width in range(sqrt_area, 0, -1):
-        if area % width ==0:
-            height = area // width
-            return[height,width]"""
+    print("Sequenza d):")
+    start = 19
+    for i in range(5):
+        print(start + i * 8)
+    print()
+    
+    return
 
 
-"""
-date due stringhe note e magazine, restituisci true se note può essere costruita utilizzando le lettere di magazine e false in caso contrario.
-ogni lettera nelle magazine può essere utilizzata solo una volta in note
-"""
-def ransom(note: str, magazine: str) -> bool:
-    char_count: dict[str,int] = {}
-    for char in magazine:
-        #metodo alternativo per scrivere l'if presente qui sotto
-        char_count[char] = char_count.get(char,0) + 1
-        """if char in char_count:
-            char_count[char] = char_count[char] +1
+
+
+
+##################
+
+def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+    dizio : dict = {}
+    for i in dict1.keys():
+        if i in dict2.keys():
+            dizio[i] = dict1[i]
+            dizio[i] += dict2[i]
         else:
-            char_count[char] = 0"""
+            dizio[i] = dict1[i]
+            
+    for i in dict2.keys():
+        if i not in dict1.keys():
+            dizio[i] = dict2[i]
+            
+    return dizio
 
-    for char in note:
-        if char_count.get(char,0) == 0:
-            return False
-        char_count[char] -= 1
+########################
 
-    return True
+
+def trova_chiave_per_valore(dizionario: dict[str: int], valore: int) -> str:
     
+    for i,j in dizionario.items():
+        if j == valore:
+            return i
+    return None
+        
+##############
 
-print(ransom("a", "b"))
-print(ransom("aa","aab"))
+def sum_above_threshold(numbers: list[int], threshold : int) -> int:
+    return sum(num for num in numbers if num > threshold)
+
+######################
+
+def filtra_e_mappa(prodotti: dict[str:float]) -> dict[str:float]:
+    return {
+        prodotto: prezzo * 0.90
+        for prodotto, prezzo in prodotti.items()
+        if prezzo > 20
+    }
+   
+
+###################
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-#########################################################################################################################################################
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-def binary_search(array:list[int], x : int) -> int:
-    return __binary_search(array, x, 0, len(array))
-
-
-def __binary_search(array: list[int], x: int, low: int, high: int) -> int:
-    if low > high:
-        return None
+def lista_a_dizionario(tuples: tuple) -> dict[str:list[int]]:
+    dizio = {}
     
-    mid =(low + high) // 2
-    if x == array[mid]:
-        return mid
+    for chiave, valore in tuples:
+        if chiave in dizio:
+            dizio[chiave].append(valore)
+        else:
+            dizio[chiave] = [valore]
+    
+    return dizio
+##################
+
+def check_access(username: str, password: ..., is_active: bool) -> str:
+        if username == "admin" and password == "12345" and is_active:
+            return "Accesso consentito"
+        else:
+            return "Accesso negato"
+    
+##################
+
+def frequency_dict(elements: list) -> dict:
+    freq_dict = {}
+    
+    for element in elements:
+        if element in freq_dict:
+            freq_dict[element] += 1
+        else:
+            freq_dict[element] = 1
+    
+    return freq_dict
+
+##################
+
+def classifica_numeri(lista: int) -> dict[str:list[int]]:
+    risultato = {
+        'pari': [],
+        'dispari': []
+    }
+    
+    for numero in lista:
+        if numero % 2 == 0:
+            risultato['pari'].append(numero)  # Corretto: usa append()
+        else:
+            risultato['dispari'].append(numero)  # Corretto: usa append()
+    
+    return risultato
+
+
+####################
+
+def check_combination(conditionA: bool, conditionB: bool, conditionC: bool) -> str:
+    if conditionA or conditionB and conditionC:
+        return "Operazione permessa"
     else:
-        if x > array[mid]:
-            return __binary_search(array, x, mid + 1, high)
-        else:
-            return __binary_search(array, x, low, mid -1)
+        return "Operazione negata"
+    
+
+#####################
+
+def transform(x: int) -> int:
+    if x % 2 == 0:
+        return x / 2
+        
+    else:
+        return (x * 3) - 1
+        
+
+######################
 
 
+class Veicolo:
+    def __init__(self, marca : str, modello : str, anno : int):
+        self.marca = marca
+        self.modello = modello
+        self.anno = anno
+        
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}")
+        
+class Auto(Veicolo):
+    def __init__(self, marca, modello, anno, numero_porte: int):
+        super().__init__(marca,modello,anno)
+        self.porte = numero_porte
+        
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Numero di porte: {self.porte}")
+        
+class Moto(Veicolo):
+    def __init__(self, marca, modello, anno, tipo : str):
+        super().__init__(marca,modello,anno)
+        self.tipo = tipo
+        
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Tipo: {self.tipo}")
 
-def binary_search_iterative(array: list[int], x: int) -> int:
-    low, high = 0, len(array)
-    while low < high:
-        mid = (low + high) // 2
-        if x == array[mid]:
-            return mid
-        elif x > array[mid]:
-            low = mid + 1
-        else:
-            high = mid - 1
-
-array: list[int] = [1,2,3,4,5, 29109, 202011]
-array.index(5)
-
-
-def visit_tree(d: dict[int, list[int]], n:int):
-    print(n)
-    left_child, right_child = tree[n]
-    if left_child != None:
-        visit_tree(tree,left_child)
-    if right_child != None:
-        visit_tree(tree, right_child)
-
-
-tree = {1:[2,3],2:[4,5],3:[None,None],4:[None,None],5:[None,None]}
-visit_tree(tree, 1)
-print(" ")
-
-def visiting_tree_iterative(tree: dict[int, list[int]],root: int):
-    stack: list[int] = [root]
-    while stack: #while len(stack) != 0
-        curr_node = stack.pop()
-        if curr_node != None:
-            print(curr_node)
-            left_child, right_child = tree[curr_node]
-            if right_child: #if right_child != 0
-                stack.append(right_child)
-            if left_child:  #if left_child != 0
-                stack.append(left_child)
-
-visiting_tree_iterative(tree,1)
-
-#####calcola la media per ciascun livello
+###########################
